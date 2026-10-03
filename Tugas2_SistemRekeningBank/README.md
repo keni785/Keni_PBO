@@ -1,14 +1,15 @@
 # Tugas 2 - Sistem Rekening Bank (PBO)
 
-Program ini merupakan simulasi pengelolaan **Sistem Rekening Bank** berbasis Java yang menerapkan konsep Object-Oriented Programming (OOP) seperti *Encapsulation*, *Constructor Validation*, *Static Variable*, serta *Method Validation*.
+Program ini dibuat untuk mensimulasikan **Sistem Rekening Bank** berbasis Java dengan menerapkan konsep **Encapsulation** serta penggunaan keyword seperti `private`, `this`, dan `static`.
 
 ---
 
-## 🚀 Fitur Utama
-1. **Validasi Saldo Awal**: Memastikan saldo awal pembuatan akun minimal **Rp 50.000**.
-2. **Informasi Rekening**: Menampilkan detail nomor rekening, nama pemilik, dan saldo berformat ribuan (contoh: `Rp 100.000`).
-3. **Transfer Saldo**: Memindahkan nominal antar-rekening dengan validasi kecukupan saldo dan nominal transfer.
-4. **Pencatatan Total Akun**: Menggunakan `static variable` untuk menghitung jumlah total rekening aktif secara otomatis.
+## 🚀 Fitur & Alur Program
+1. **Validasi Saldo Awal**: Menggunakan *access modifier* `private` pada atribut saldo dan menerapkan validasi pembuatan akun minimal **Rp 50.000**.
+2. **Informasi Rekening**: Menampilkan detail nomor rekening, nama pemilik, dan jumlah saldo.
+3. **Proses Transfer Saldo**: Logika pemindahan nominal saldo antar-rekening dengan validasi kecukupan saldo pengirim.
+4. **Status Saldo**: Menampilkan pembaruan saldo kedua rekening setelah proses transfer (berhasil/gagal).
+5. **Total Rekening Aktif**: Menggunakan variabel `static` untuk menghitung total akun yang berhasil terdaftar secara otomatis.
 
 ---
 
