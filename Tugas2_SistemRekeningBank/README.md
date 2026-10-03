@@ -5,17 +5,19 @@ Program ini dibuat untuk mensimulasikan **Sistem Rekening Bank** berbasis Java d
 ---
 
 ## 🚀 Fitur & Alur Program
-1. **Validasi Saldo Awal**: Menggunakan *access modifier* `private` pada atribut saldo dan menerapkan validasi pembuatan akun minimal **Rp 50.000**.
-2. **Informasi Rekening**: Menampilkan detail nomor rekening, nama pemilik, dan jumlah saldo.
-3. **Proses Transfer Saldo**: Logika pemindahan nominal saldo antar-rekening dengan validasi kecukupan saldo pengirim.
-4. **Status Saldo**: Menampilkan pembaruan saldo kedua rekening setelah proses transfer (berhasil/gagal).
-5. **Total Rekening Aktif**: Menggunakan variabel `static` untuk menghitung total akun yang berhasil terdaftar secara otomatis.
+1. **Atribut yang Di privat**: Menggunakan *access modifier* `private` untuk data penting seperti nomor rekening, nama pemilik, dan saldo agar tidak bisa diakses sembarangan dari luar class.
+2. **Static Variable**: Menggunakan variabel `static` (`totalRekening`) untuk menghitung jumlah total akun/rekening yang dibuat secara otomatis.
+3. **Constructor & Validasi**: Menyiapkan objek rekening baru sekaligus melakukan validasi saldo awal minimal **Rp 50.000**.
+4. **Getter & Setter**: Menyediakan method untuk mengambil nilai saldo (`getSaldo`) dan merubah/meng-update saldo (`setSaldo`) dengan pengecekan saldo tidak boleh negatif.
+5. **Method Bisnis**: 
+   * `tampilkanInformasi()`: Menampilkan detail akun dan format saldo sesuai standar ribuan.
+   * `transfer()`: Mengelola transaksi antar-rekening lengkap dengan pengecekan batas nominal dan kecukupan saldo.
 
 ---
 
 ## 📁 Struktur File
 * `RekeningBank.java` - Class model yang berisi atribut, constructor, getter-setter, dan logika bisnis.
-* `MainBank.java` - Class utama (*main class*) untuk menjalankan pengujian program.S
+* `MainBank.java` - Class utama (*main class*) untuk menjalankan pengujian program.
 
 ---
 
