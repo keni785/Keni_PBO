@@ -23,11 +23,11 @@ Program ini merupakan simulasi pengelolaan **Sistem Rekening Bank** berbasis Jav
 ### 1. Pengujian Transfer Berhasil
 Pada pengujian pertama, akun Aca mengirim saldo sebesar Rp 30.000 ke akun Siti. Karena saldo Aca mencukupi (Rp 100.000), proses transfer berhasil dan saldo kedua akun diperbarui secara otomatis.
 
-![Hasil Running - Transfer Berhasil](Hasil_Running_1.png)
+![Hasil Running - Transfer Berhasil](Hasil Running 1.png)
 
 ---
 
 ### 2. Pengujian Transfer Gagal (Saldo Tidak Mencukupi)
 Pada pengujian kedua, sistem melakukan simulasi transfer saat saldo tidak mencukupi. Sistem secara otomatis menolak transaksi dengan pesan error `ERROR: Transfer gagal! Saldo tidak mencukupi.` sehingga saldo kedua akun tetap aman dan tidak berkurang.
 
-![Hasil Running - Transfer Gagal](Hasil_Running_2.png)
+![Hasil Running - Transfer Gagal](Hasil Running 2.png)
