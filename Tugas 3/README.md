@@ -5,25 +5,12 @@ untuk mengelola data inventaris barang secara dinamis.
 
 ## 🗂️ Struktur File
 
-```
-├── Produk.java              # Class blueprint objek (atribut + constructor + getter/setter)
-├── MainInventaris.java      # Program utama (HashMap, simulasi CRUD sederhana)
-└── README.md
-```
-
-## 🚀 Cara Menjalankan
-
-```bash
-# 1. Clone repository ini
-git clone https://github.com/username-kamu/nama-repo-kamu.git
-cd nama-repo-kamu
-
-# 2. Compile
-javac Produk.java MainInventaris.java
-
-# 3. Run
-java MainInventaris
-```
+* Produk.java — Class blueprint objek (atribut + constructor + getter/setter)
+* MainInventaris.java — Program utama (HashMap, simulasi CRUD sederhana)
+* Daftar Awal.png — Screenshot output daftar inventaris awal
+* Proses Update.png — Screenshot output proses update stok & hapus
+* Daftar Akhir.png — Screenshot output daftar inventaris akhir
+* README.md — Dokumentasi project
 
 ## 📖 Penjelasan Program
 
@@ -58,7 +45,7 @@ Kode: P007 | Nama: Mouse | Stok: 25
 Total produk : 7
 Total stok   : 140
 ```
-![Daftar Awal](screenshots/Daftar-Awal.png)
+![Daftar Awal](Daftar%20Awal.png)
 
 
 ### 2️⃣ Proses Update & Hapus
@@ -66,7 +53,7 @@ Total stok   : 140
 [UPDATE] Stok P002 diubah menjadi 15
 [HAPUS] Produk P007 berhasil dihapus.
 ```
-![Proses Update](screenshots/Proses-Update.png)
+![Proses Update](Proses%20Update.png)
 
 ### 3️⃣ Daftar Inventaris Akhir
 ```
@@ -80,7 +67,7 @@ Kode: P006 | Nama: Printer | Stok: 5
 Total produk : 6
 Total stok   : 120
 ```
-![Daftar Akhir](screenshots/Daftar-Akhir.png)
+![Daftar Akhir](Daftar%20Akhir.png)
 
 ## 📝 Method Penting yang Digunakan
 
