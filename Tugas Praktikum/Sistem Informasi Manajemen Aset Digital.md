@@ -1,139 +1,54 @@
+# 📚Sistem Informasi Manajemen Aset Digital
 
-public abstract class AsetDigital {
-    //Atribut
-    protected String id;
-    protected String namaFile;
-    protected double ukuranMB;
+---
 
-    // Constructor
-    public AsetDigital(String id, String namaFile, double ukuranMB) {
-        this.id = id;
-        this.namaFile = namaFile;
-        this.ukuranMB = ukuranMB;
-    }
+## Deskripsi Proyek
+Proyek ini adalah implementasi tugas praktikum untuk mengelola berbagai jenis aset digital (Gambar, Video, Dokumen) menggunakan kombinasi konsep Abstract Class dan Interface dalam bahasa Java.
 
-    // Method Abstrak
-    public abstract void tampilkanPreview();
+---
 
-    // Method Konkrit
-    public void getInfo() {
-        System.out.println("\n=== Info Aset ===");
-        System.out.println("ID      : " + id);
-        System.out.println("Nama    : " + namaFile);
-        System.out.println("Ukuran  : " + ukuranMB + " MB");
-    }
-}
+## ✨ Fitur Utama Sistem
 
-public class Gambar extends AsetDigital {
-    private String resolusi;
+Berikut adalah fitur-fitur yang tersedia di dalam sistem ini:
 
-    public Gambar(String id, String namaFile, double ukuranMB, String resolusi) {
-        super(id, namaFile, ukuranMB);
-        this.resolusi = resolusi;
-    }
+### 1. Manajemen Multi-Aset Digital
+Sistem dapat menampung dan mengelola berbagai jenis aset digital dalam satu wadah terpusat (menggunakan `ArrayList`). Aset yang terdaftar meliputi:
+*   **Gambar:** Menyimpan informasi resolusi gambar.
+*   **Video:** Menyimpan informasi durasi video.
+*   **Dokumen:** Menyimpan informasi jumlah halaman dokumen.
 
-    @Override
-    public void tampilkanPreview() {
-        System.out.println("[REVIEW GAMBAR] Menampilkan gambar dengan resolusi: " + resolusi);
-    }
-}
+### 2. Fitur Preview Aset (Polimorfisme)
+Setiap aset memiliki cara unik untuk menampilkan *preview*-nya. Sistem ini secara otomatis memanggil method `tampilkanPreview()` yang sesuai dengan jenis asetnya masing-masing berkat konsep **Polimorfisme** dari Abstract Class `AsetDigital`.
 
-public class Video extends AsetDigital {
-    private String durasi;
+### 3. Sistem Promosi Khusus (Interface)
+Sistem membedakan aset biasa dengan aset yang bisa dipromosikan. Fitur ini menggunakan interface `DapatDipromosikan`. 
+*   Jika sebuah aset (misalnya `VideoPromosi`) mendukung promosi, sistem akan otomatis mendeteksinya menggunakan `instanceof` dan menjalankan method `promosikan()`.
+*   Sistem juga menampilkan info status promosi menggunakan `default method` `infoPromosi()`.
 
-    public Video(String id, String namaFile, double ukuranMB, String durasi) {
-        super(id, namaFile, ukuranMB);
-        this.durasi = durasi;
-    }
+### 4. Pemisahan Grup Aset Berdasarkan Kemampuan
+Selain dikelompokkan berdasarkan jenis aset, sistem juga memungkinkan pengelompokan aset berdasarkan "kemampuan" (kemampuan promosi) menggunakan wadah `ArrayList<DapatDipromosikan>`. Ini membuktikan fleksibilitas Polimorfisme via Interface.
 
-    @Override
-    public void tampilkanPreview() {
-        System.out.println("[REVIEW VIDEO] Memutar video dengan durasi: " + durasi);
-    }
-}
+---
 
-public class Dokumen extends AsetDigital {
-    private int jumlahHalaman;
+## 🛠️ Konsep OOP yang Diterapkan
+*   **Abstract Class:** Digunakan pada `AsetDigital` sebagai *blueprint* dasar yang menampung atribut umum (`id`, `namaFile`, `ukuranMB`).
+*   **Inheritance (Pewarisan):** Subclass seperti `Gambar`, `Video`, dan `Dokumen` mewarisi sifat dari `AsetDigital`.
+*   **Interface:** Digunakan pada `DapatDipromosikan` sebagai kontrak kemampuan tambahan (*can-do*).
+*   **Polymorphism:** Objek dapat diperlakukan sebagai tipe induknya (`AsetDigital`) atau sebagai tipe kemampuan (`DapatDipromosikan`).
+*   **Downcasting:** Digunakan untuk mengubah referensi `AsetDigital` menjadi `DapatDipromosikan` saat memanggil method promosi.
 
-    public Dokumen(String id, String namaFile, double ukuranMB, int jumlahHalaman) {
-        super(id, namaFile, ukuranMB);
-        this.jumlahHalaman = jumlahHalaman;
-    }
+---
 
-    @Override
-    public void tampilkanPreview() {
-        System.out.println("[REVIEW DOKUMEN] Menampilkan dokumen sebanyak: " + jumlahHalaman + " halaman");
-    }
-}
+## 💻 Cara Menjalankan Program
+1. Pastikan kamu sudah menginstal **Java JDK** di komputermu.
+2. *Clone* repository ini atau *download* semua file `.java`.
+3. Buka terminal atau Command Prompt di folder tempat file disimpan.
+4. Compile semua file: `javac *.java`
+5. Jalankan program utama: `java MainAset`
 
-public interface DapatDipromosikan {
-    // Method abstrak
-    void promosikan();
+---
 
-    // Default Method
-    default void infoPromosi() {
-        System.out.println(">>> Aset ini berstatus: DAPAT DIPROMOSIKAN.\n");
-    }
-}
+## Output
+<img width="1920" height="1020" alt="Screenshot 2026-11-12 101549" src="https://github.com/user-attachments/assets/395bad99-143f-46c7-b427-b05a1be9ebf9" />
+<img width="1920" height="1020" alt="Screenshot 2026-11-12 101619" src="https://github.com/user-attachments/assets/998eb757-6c1f-4cc7-9dab-d607fee71f5f" />
 
-public class VideoPromosi extends Video implements DapatDipromosikan {
-    public VideoPromosi(String id,String namaFile, double ukuranMB, String durasi) {
-        super(id, namaFile,ukuranMB, durasi);
-    }
-
-    // Wajib override method abstark dari interface
-    @Override
-    public void promosikan() {
-        System.out.println(">>> [PROMOSI] " + namaFile + " berhasil diunggah ke media sosial!");
-    }
-}
-
-import java.util.ArrayList;
-
-public class MainAset {
-    public static void main(String[] args) {
-
-        // 1. ArrayList<AsetDigital> 1 objek dari masing-masing subclass
-        // Polimorfisme via abstract class
-        ArrayList<AsetDigital> daftarAset = new ArrayList<>();
-
-        daftarAset.add(new Gambar("G01", "Pemandangan.jpg", 2.5, "1920x1080"));
-        daftarAset.add(new Video("V01", "Tutorial.mp4", 15.0, "10 Menit"));
-        daftarAset.add(new Dokumen("D01", "Laporan Hasil Analisis.pdf", 1.2, 25));
-        daftarAset.add(new VideoPromosi("VP01", "Iklan Produk.mp4", 8.5, "1 Menit"));
-
-        System.out.println("\n=========================================");
-        System.out.println("   POLIMORFISME VIA ABSTRACT CLASS       ");
-        System.out.println("=========================================");
-
-        // 2. Iterasi dan panggil tampilkanPreview()
-        for (AsetDigital aset : daftarAset) {
-            aset.getInfo();
-            aset.tampilkanPreview();
-
-            // 3. Instanceof untuk mengecek objek yang mengimplementasikan DapatDipromosikan
-            if (aset instanceof DapatDipromosikan) {
-                // Downcasting
-                DapatDipromosikan asetPromosi = (DapatDipromosikan) aset;
-                asetPromosi.promosikan();
-            }
-            System.out.println("------------------------------");
-        }
-
-        System.out.println("\n=========================================");
-        System.out.println("   POLIMORFISME VIA INTERFACE            ");
-        System.out.println("=========================================");
-
-        // 4. ArrayList<DapatDipromosikan>
-        // Polimorfisme via Interface
-        ArrayList<DapatDipromosikan> listPromosi = new ArrayList<>();
-
-        VideoPromosi videoIklan = new VideoPromosi("VP", "Promo Akhir Tahun.mp4", 5.0, "30 Detik");
-        listPromosi.add(videoIklan);
-
-        for (DapatDipromosikan dp : listPromosi) {
-            dp.promosikan();
-            dp.infoPromosi();   // Memanggil default method
-        }
-    }
-}
