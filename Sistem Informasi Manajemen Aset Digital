@@ -22,28 +22,7 @@ public abstract class AsetDigital {
         System.out.println("Ukuran  : " + ukuranMB + " MB");
     }
 }
-public interface DapatDipromosikan {
-    // Method abstrak
-    void promosikan();
 
-    // Default Method
-    default void infoPromosi() {
-        System.out.println(">>> Aset ini berstatus: DAPAT DIPROMOSIKAN.\n");
-    }
-}
-public class Dokumen extends AsetDigital {
-    private int jumlahHalaman;
-
-    public Dokumen(String id, String namaFile, double ukuranMB, int jumlahHalaman) {
-        super(id, namaFile, ukuranMB);
-        this.jumlahHalaman = jumlahHalaman;
-    }
-
-    @Override
-    public void tampilkanPreview() {
-        System.out.println("[REVIEW DOKUMEN] Menampilkan dokumen sebanyak: " + jumlahHalaman + " halaman");
-    }
-}
 public class Gambar extends AsetDigital {
     private String resolusi;
 
@@ -57,6 +36,57 @@ public class Gambar extends AsetDigital {
         System.out.println("[REVIEW GAMBAR] Menampilkan gambar dengan resolusi: " + resolusi);
     }
 }
+
+public class Video extends AsetDigital {
+    private String durasi;
+
+    public Video(String id, String namaFile, double ukuranMB, String durasi) {
+        super(id, namaFile, ukuranMB);
+        this.durasi = durasi;
+    }
+
+    @Override
+    public void tampilkanPreview() {
+        System.out.println("[REVIEW VIDEO] Memutar video dengan durasi: " + durasi);
+    }
+}
+
+public class Dokumen extends AsetDigital {
+    private int jumlahHalaman;
+
+    public Dokumen(String id, String namaFile, double ukuranMB, int jumlahHalaman) {
+        super(id, namaFile, ukuranMB);
+        this.jumlahHalaman = jumlahHalaman;
+    }
+
+    @Override
+    public void tampilkanPreview() {
+        System.out.println("[REVIEW DOKUMEN] Menampilkan dokumen sebanyak: " + jumlahHalaman + " halaman");
+    }
+}
+
+public interface DapatDipromosikan {
+    // Method abstrak
+    void promosikan();
+
+    // Default Method
+    default void infoPromosi() {
+        System.out.println(">>> Aset ini berstatus: DAPAT DIPROMOSIKAN.\n");
+    }
+}
+
+public class VideoPromosi extends Video implements DapatDipromosikan {
+    public VideoPromosi(String id,String namaFile, double ukuranMB, String durasi) {
+        super(id, namaFile,ukuranMB, durasi);
+    }
+
+    // Wajib override method abstark dari interface
+    @Override
+    public void promosikan() {
+        System.out.println(">>> [PROMOSI] " + namaFile + " berhasil diunggah ke media sosial!");
+    }
+}
+
 import java.util.ArrayList;
 
 public class MainAset {
@@ -104,29 +134,5 @@ public class MainAset {
             dp.promosikan();
             dp.infoPromosi();   // Memanggil default method
         }
-    }
-}
-public class Video extends AsetDigital {
-    private String durasi;
-
-    public Video(String id, String namaFile, double ukuranMB, String durasi) {
-        super(id, namaFile, ukuranMB);
-        this.durasi = durasi;
-    }
-
-    @Override
-    public void tampilkanPreview() {
-        System.out.println("[REVIEW VIDEO] Memutar video dengan durasi: " + durasi);
-    }
-}
-public class VideoPromosi extends Video implements DapatDipromosikan {
-    public VideoPromosi(String id,String namaFile, double ukuranMB, String durasi) {
-        super(id, namaFile,ukuranMB, durasi);
-    }
-
-    // Wajib override method abstark dari interface
-    @Override
-    public void promosikan() {
-        System.out.println(">>> [PROMOSI] " + namaFile + " berhasil diunggah ke media sosial!");
     }
 }
